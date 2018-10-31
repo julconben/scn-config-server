@@ -25,24 +25,12 @@ eureka:
     #For eureka clients running in eureka server, it needs to connect to servers in other zones
     preferSameZone: false
 
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/prueba?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: root
-    driverClassName: com.mysql.jdbc.Driver
-
 ---
 spring:
   profiles: cloud
   cloud:
     config:
       uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://${PREFIX:}${configserver.${application.domain:cfapps.io}}}
-  datasource:
-    url: jdbc:mysql://localhost:3306/prueba?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: root
-    driverClassName: com.mysql.jdbc.Driver
     
 oauth2:
   client:
@@ -72,11 +60,6 @@ spring:
   cloud:
     config:
       uri: http://${CONFIGSERVER_1_PORT_8888_TCP_ADDR:localhost}:8888
-  datasource:
-    url: jdbc:mysql://localhost:3306/prueba?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: root
-    driverClassName: com.mysql.jdbc.Driver
 endpoints:
   restart: enabled
 eureka:
