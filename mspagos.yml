@@ -1,0 +1,35 @@
+mi:
+  prop:desde el YML
+#DataSource
+spring:
+  datasource:
+    url:jdbc:mysql://localhost:3306/prueba?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username:root
+    password:root
+    driverClassName:com.mysql.jdbc.Driver
+#Feign
+zuulserver:
+  ribbon:
+    listOfServers: localhost:8080
+    #NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
+
+    # the eureka vipAddress of the target service (Disabled)
+    #DeploymentContextBasedVipAddresses: samplebackendservice
+
+    # Max number of retries on the same server (excluding the first try)
+    MaxAutoRetries: 1
+
+    # Max number of next servers to retry (excluding the first server)
+    MaxAutoRetriesNextServer: 1
+
+    # Whether all operations can be retried for this client
+    OkToRetryOnAllOperations: true
+
+    # Interval to refresh the server list from the source
+    ServerListRefreshInterval: 2000
+
+    # Connect timeout used by Apache HttpClient
+    ConnectTimeout: 3000
+
+    # Read timeout used by Apache HttpClient
+    ReadTimeout: 3000
